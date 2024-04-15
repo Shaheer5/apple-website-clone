@@ -25,9 +25,14 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.to("#hero-title", {
-      // y: -20,
       opacity: 1,
       delay: 1.5,
+    });
+    gsap.to("#cta", {
+      y: -50,
+      opacity: 1,
+      delay: 2.5,
+      stagger: 1,
     });
   }, []);
 
@@ -42,12 +47,23 @@ const Hero = () => {
             className="pointer-events-none"
             autoPlay
             muted
+            loop
             playsInline={true}
             key={videoSrc}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
         </div>
+      </div>
+
+      <div
+        id="cta"
+        className="flex flex-col items-center opacity-0 translate-y-20"
+      >
+        <a href="#highlights" className="btn transition-all">
+          Buy
+        </a>
+        <p>from $199/month or $1199</p>
       </div>
     </section>
   );
