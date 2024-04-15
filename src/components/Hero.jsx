@@ -27,13 +27,24 @@ const Hero = () => {
     gsap.to("#hero-title", {
       opacity: 1,
       delay: 1.5,
+      duration: 2,
     });
-    gsap.to("#cta", {
-      y: -50,
-      opacity: 1,
-      delay: 2.5,
-      stagger: 1,
-    });
+    if (window.innerWidth < 760) {
+      gsap.to("#cta", {
+        y: -50,
+        opacity: 1,
+        delay: 3,
+        stagger: 1,
+      });
+    } else {
+      gsap.to("#cta", {
+        y: -50,
+        opacity: 1,
+        delay: 1.5,
+        stagger: 1,
+      });
+
+    }
   }, []);
 
   return (
@@ -47,7 +58,7 @@ const Hero = () => {
             className="pointer-events-none"
             autoPlay
             muted
-            loop
+            // loop
             playsInline={true}
             key={videoSrc}
           >
