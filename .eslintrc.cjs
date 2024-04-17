@@ -21,5 +21,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'react/prop-types': 'off',
     'react-refresh/only-export-components': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    'react-hooks/rules-of-hooks': 'error',
   },
 };

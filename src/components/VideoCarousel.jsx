@@ -25,6 +25,12 @@ const VideoCarousel = () => {
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
+    // slider
+    gsap.to("#slider", {
+      transform: `translateX(${-100 * videoId}%)`,
+      duration: 2,
+      ease: "power2.inOut",
+    });
     // video animation to play the video when it is in the view
     gsap.to("#video", {
       scrollTrigger: {
@@ -56,15 +62,59 @@ const VideoCarousel = () => {
   };
 
   useEffect(() => {
-    const currentProgress = 0;
+    let currentProgress = 0;
     let span = videoSpanRef.current;
     if (span[videoId]) {
       // animate the progress of the video
       let anim = gsap.to(span[videoId], {
-        onUpdate: () => {},
-        onComplete: () => {},
+        onUpdate: () => {
+          const progress = Math.ceil(anim.progress() * 100);
+          if (progress != currentProgress) {
+            currentProgress = progress;
+
+            gsap.to(videoDivRef.current[videoId], {
+              width:
+                window.innerWidth < 760
+                  ? "10vw"
+                  : window.innerWidth < 1200
+                  ? "10vw"
+                  : "4vw",
+            });
+            gsap.to(span[videoId], {
+              width: `${currentProgress}%`,
+              backgroundColor: "white",
+            });
+          }
+        },
+        onComplete: () => {
+          if (isPlaying) {
+            gsap.to(videoDivRef.current[videoId], {
+              width: "12px",
+            });
+            gsap.to(span[videoId], {
+              backgroundColor: "#afafaf",
+            });
+          }
+        },
       });
+      if (videoId === 0) {
+        anim.restart();
+      }
+
+      const animUpdate = () => {
+        anim.progress(
+          videoRef.current[videoId].currentTime /
+            highlightsSlides[videoId].videoDuration
+        );
+      };
+      if (isPlaying) {
+        gsap.ticker.add(animUpdate);
+      } else {
+        gsap.ticker.remove(animUpdate);
+      }
     }
+
+    // if you add isPlaying to the dependency array, it will cause a bounce effect in timeline when you click on the pause button
   }, [videoId, startPlay]);
 
   const handleProcess = (type, i) => {
@@ -86,7 +136,7 @@ const VideoCarousel = () => {
         break;
 
       case "play":
-        setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying, videoId: 0 }));
+        setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
         break;
 
       default:
@@ -110,11 +160,11 @@ const VideoCarousel = () => {
                   preload="auto"
                   muted
                   ref={(el) => (videoRef.current[i] = el)}
-                  // onEnded={() =>
-                  //   i !== 3
-                  //     ? handleProcess("video-end", i)
-                  //     : handleProcess("video-last")
-                  // }
+                  onEnded={() =>
+                    i !== 3
+                      ? handleProcess("video-end", i)
+                      : handleProcess("video-last")
+                  }
                   onPlay={() =>
                     setVideo((pre) => ({ ...pre, isPlaying: true }))
                   }
@@ -169,6 +219,5 @@ const VideoCarousel = () => {
     </>
   );
 };
-
 
 export default VideoCarousel;

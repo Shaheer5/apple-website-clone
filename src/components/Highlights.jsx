@@ -28,14 +28,22 @@ const Highlights = () => {
           </h1>
 
           <div className="flex flex-wrap items-end gap-5">
-            <p className="link">
+            <a
+              href="https://www.youtube.com/watch?v=xqyUdNxWazA&pp=ygUZaXBob25lIDE1IHBybyBtYXggdHJhaWxlcg%3D%3D"
+              target="blank"
+              className="link"
+            >
               Watch the film
               <img src={watchImg} alt="watch" className="ml-2" />
-            </p>
-            <p className="link">
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=ZiP1l7jlIIA&pp=ygUXaXBob25lIDE1IHBybyBtYXggZXZlbnQ%3D"
+              target="blank"
+              className="link"
+            >
               Watch the event
               <img src={rightImg} alt="watch" className="ml-2" />
-            </p>
+            </a>
           </div>
         </div>
 
