@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Highlights from "./components/Highlights";
+import Model from "./components/Model";
+import ModelView from "./components/ModelView";
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
       <Navbar />
       <Hero />
       <Highlights />
+      <Model />
     </main>
   );
 }
