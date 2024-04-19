@@ -2,11 +2,10 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Highlights from "./components/Highlights";
 import Model from "./components/Model";
-import ModelView from "./components/ModelView";
 
 function App() {
   return (
-    <main className="bg-black">
+    <main className="bg-black overflow-y-auto">
       <Navbar />
       <Hero />
       <Highlights />
