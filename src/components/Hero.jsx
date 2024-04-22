@@ -33,7 +33,7 @@ const Hero = () => {
       gsap.to("#cta", {
         y: -50,
         opacity: 1,
-        delay: 3,
+        delay: 4,
         stagger: 1,
       });
     } else {
@@ -43,7 +43,6 @@ const Hero = () => {
         delay: 1.5,
         stagger: 1,
       });
-
     }
   }, []);
 
@@ -58,6 +57,7 @@ const Hero = () => {
             className="pointer-events-none"
             autoPlay
             muted
+            preload="metadata"
             // loop
             playsInline={true}
             key={videoSrc}
