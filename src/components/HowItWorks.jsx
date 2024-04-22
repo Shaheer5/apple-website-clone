@@ -15,7 +15,6 @@ const HowItWorks = () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: "#chip",
-        toggleActions: "restart reverse restart reverse",
         start: "20% bottom",
       },
     });
@@ -31,12 +30,12 @@ const HowItWorks = () => {
     <section className="common-padding">
       <div className="screen-max-width">
         <div id="chip" className="flex-center w-full my-20">
-          <img src={chipImg} alt="Chip" width={180} height={180} />
+          <img src={chipImg} alt="chip" width={180} height={180} />
         </div>
         <div className="flex flex-col items-center">
           <h2 className="hiw-title">
             A17 Pro Chip
-            <br />A monster when for gaming.
+            <br /> A monster when for gaming.
           </h2>
           <p className="hiw-subtitle">
             It's here. The Biggest redesign in the history or Apple GPUs.
@@ -56,6 +55,7 @@ const HowItWorks = () => {
               <video
                 className="pointer-events-none"
                 playsInline
+                preload="none"
                 muted
                 autoPlay
                 ref={videoRef}
@@ -81,7 +81,9 @@ const HowItWorks = () => {
               <span className="text-white">
                 Games will look and feel so immersive.
               </span>{" "}
-              With incredibly detailed enviroments and realistic characters. And with industry-leading speed and efficiency, A17 Pro takes fast and runs with it.
+              With incredibly detailed enviroments and realistic characters. And
+              with industry-leading speed and efficiency, A17 Pro takes fast and
+              runs with it.
             </p>
           </div>
 
