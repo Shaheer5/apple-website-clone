@@ -24,14 +24,14 @@ const Footer = () => {
         </div>
         <div className="bg-neutral-700 my-5 h-[1px] w-full" />
         <div className="flex md:flex-row flex-col md:items-center justify-between">
-          <p className="font-semibold text-gray text-xs">
+          <p className="font-semibold text-gray text-xs mb-2">
             Copyright @ 2024 Apple Inc. All rights reserved.
           </p>
-          <div className="flex">
+          <div className="flex mb-2">
             {footerLinks.map((link, i) => (
               <p
                 key={link}
-                className="font-semibold text-gray text-xs cursor-pointer"
+                className="font-semibold text-gray text-xs cursor-pointer flex"
               >
                 {link}{" "}
                 {i !== footerLinks.length - 1 && (
